@@ -6,7 +6,7 @@ class Item < ApplicationRecord
     # 注文詳細たちを持っている
   has_many :order_details, dependent: :destroy
   has_one_attached :item_image
-  
+
   def get_item_image(width, height)
   unless item_image.attached?
     file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
@@ -15,5 +15,5 @@ class Item < ApplicationRecord
   item_image.variant(resize_to_limit: [width, height]).processed
   end
 
- 
+
 end
