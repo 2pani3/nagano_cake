@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "public/homes#top"
-  get 'about'=>'homes#about'
+  get 'about'=>'public/homes#about'
 # 会員側
     devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
