@@ -13,9 +13,11 @@
   <body class="d-flex-column vh-100">
     <!--ヘッダーの部分テンプレート-->
     <%= render 'layouts/header' %>
+    <!--フラッシュメッセージの表示-->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <!--コンテンツ-->
     <%= yield %>
 
 
