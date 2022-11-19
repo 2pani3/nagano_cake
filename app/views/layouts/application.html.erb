@@ -10,13 +10,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex-column vh-100">
+    <!--ヘッダーの部分テンプレート-->
+    <%= render 'layouts/header' %>
+    <!--フラッシュメッセージの表示-->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= render 'layouts/header' %>
-    <!--ヘッダーの部分テンプレート-->
-
+    <!--コンテンツ-->
     <%= yield %>
+
+
+    <!--フッターの部分テンプレート-->
+    <%= render 'layouts/footer' %>
   </body>
 </html>
