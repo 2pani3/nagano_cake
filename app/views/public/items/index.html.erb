@@ -4,23 +4,14 @@
       <h2>ジャンル検索</h2>
       <%#= render 'info', user: current_user %>
       <!--<h2 class="mt-3">New book</h2>-->
-      <%= render 'genre_search', genre: @genre %>
+
     </div>
 
     <div class="col-md-8 offset-md-1">
       <h2>商品一覧</h2>
       <%#= render 'index',users: @users %>
       <!--ここから部分テンプレート化する-->
-      <div class="row wrapper-grid">
-          <% items.each do |item| %>
-            <%= link_to(item) do %>
-              <%= image_tag item.get_item_image, size: '400x300' %></td>
-              <p><%= item.name %></p>
-              <p>¥<%= item.price %></p>
-            <% end %>
-          <% end %>
-          <%= paginate items %>
-      </div>
+
       <!--部分テンプレートここまで-->
 
 
