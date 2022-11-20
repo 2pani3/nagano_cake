@@ -13,7 +13,7 @@
       </div>
 
 
-      <%= form_with model: @cart_item, url: cart_items_path, method: :post local: true do |f| %>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
         <!--form.select オブジェクト名, プロパティ名(カラム名), タグの情報 [, オプション]-->
         <% if customer_signed_in? %>
