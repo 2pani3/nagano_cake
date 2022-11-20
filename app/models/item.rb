@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  　#1つのジャンルに属している
+    #1つのジャンルに属している
   belongs_to :genre
     #カートに入った商品たちを持っている
   has_many :cart_items, dependent: :destroy
