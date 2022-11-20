@@ -14,7 +14,7 @@
         <div class="mx-auto col-11">
           <% @items.each do |item| %>
             <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_item_image, size: '320x240' %>
+              <%= image_tag item.get_item_image(100,150) %>
               <div class="font-weight-bold">
                 <p><%= item.name %></p>
               </div>
