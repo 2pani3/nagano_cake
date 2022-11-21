@@ -8,51 +8,85 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if customer_signed_in? %>
-          <li>
-            <%= link_to customer_path(current_customer),class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-info-circle"></i> マイページ</p>
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to items_path,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-birthday-cake"></i> 商品一覧</p>
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to cart_items_path ,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-shopping-cart"></i> カート</p>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-sign-out-alt"></i> ログアウト</p>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to about_path,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-store"></i> ながのCAKEについて</p>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to items_path,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-birthday-cake"></i> 商品一覧</p>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_registration_path,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-user-plus"></i> 新規登録</p>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_customer_session_path ,class: 'nav-link text-nowrap text-light' do %>
-              <p style="color:#F6E8E8;"><i class="fas fa-sign-in-alt"></i>ログイン</p>
-            <% end %>
-          </li>
+
+        <% if customer_signed_in? %><!--会員-->
+        <h5 class="ml-5">ようこそ、<%= current_customer.last_name %>さん!</h5>
+
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <%= link_to customer_path(current_customer),class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-info-circle"></i> マイページ</p>
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to items_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-birthday-cake"></i> 商品一覧</p>
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to cart_items_path ,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-shopping-cart"></i> カート</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-sign-out-alt"></i> ログアウト</p>
+              <% end %>
+            </li>
+          </ul>
+        <% elsif admin_signed_in? %><!--管理者-->
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <%= link_to admin_items_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;">商品一覧</p>
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to admin_customers_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;">会員一覧</p>
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to admin_root_path ,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;">注文履歴一覧</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_genres_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;">ジャンル一覧</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;">ログアウト</p>
+              <% end %>
+            </li>
+          </ul>
+        <% else %><!--見るだけの人-->
+          <ul>
+            <li>
+              <%= link_to about_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-store"></i> ながのCAKEについて</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to items_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-birthday-cake"></i> 商品一覧</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_customer_registration_path,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-user-plus"></i> 新規登録</p>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_customer_session_path ,class: 'nav-link text-nowrap text-light' do %>
+                <p style="color:#F6E8E8;"><i class="fas fa-sign-in-alt"></i>ログイン</p>
+              <% end %>
+            </li>
+          </ul>
         <% end %>
-        </ul>
+
       </div>
     </div>
   </nav>
