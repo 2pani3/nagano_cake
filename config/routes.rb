@@ -19,8 +19,10 @@ Rails.application.routes.draw do
       patch 'customers/information' => 'customers#update', as:'information'
       get 'customers/quit' => 'customers#quit', as:'quit'
       patch 'customers/withdrawal' => 'customers#withdrawal', as:'withdrawal'
-    resources :cart_items,only: [:index, :update, :destroy, :create]
+
       delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as:'all_destroy'
+    resources :cart_items,only: [:index, :update, :destroy, :create]
+
     resources :orders,only: [:index, :new, :show, :create]
       post 'orders/check' => 'orders#check', as:'check'
       get 'orders/complete' => 'orders#complete', as:'complete'
