@@ -1,0 +1,67 @@
+<div class="container px-5">
+  <div class="row d-flex mb-3">
+    <div class="col-7">
+      <h2 class="font-weight-bold">ショッピングカート</h2>
+    </div>
+    <div class="col-2 offset-3 text_right">
+      <%= link_to 'カートを空にする', all_destroy_path, method: :delete, class:"btn btn-sm btn-danger" %>
+    </div>
+  </div>
+
+  <div class="row-mt-3">
+    <table width="80%">
+      <thead>
+        <tr>
+          <th class="text-center">商品名</th>
+          <th class="text-center">単価(税込)</th>
+          <th class="text-center">数量</th>
+          <th class="text-center">小計</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td class="text-center">
+              <%= image_tag cart_item.get_item_image(70,50) %>
+              <%= cart_item.item.name %>
+              </td>
+            <td class="text-center"><%= cart_item.item.tax_price.to_s(:delimited) %></td><!--税込にする-->
+            <td class="text-center">
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch, local: true do |f| %>
+              <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+                  <%= f.select :amount,(1..10) %>
+                  <%= f.submit "変更", class: "btn btn-outline-danger" %>
+              <% end %>
+            </td>
+            <td class="text-center"><%= (cart_item.item.tax_price * cart_item.amount).to_s(:delimited) %></td>
+            <td class="text-center"><%= link_to '削除する', cart_item_path(cart_item.id), class:"btn btn-sm btn-danger", method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-6 text_left">
+      <%= link_to '買い物を続ける', root_path, class:"btn btn-sm btn-outline-danger" %>
+    </div>
+    <div class="col-3 offset-2 text_right">
+      <table>
+        <tr>
+          <th class="text-center">合計金額</th>
+          <td class="text-center"><%= @total_price.to_s(:delimited)%></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-10 text-center">
+      <% if @cart_items.any? %>
+        <%= link_to '情報入力に進む', new_order_path, class:"btn btn-sm btn-outline-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
