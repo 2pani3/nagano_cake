@@ -12,6 +12,9 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       flash[:notice] = "商品が登録されました。"
       redirect_to admin_items_path(@item)
+    else
+      flash[:notice] = "商品の登録内容に不備があります。"
+      render "new"
     end
   end
 
