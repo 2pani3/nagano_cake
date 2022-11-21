@@ -11,7 +11,8 @@ class Public::CartItemsController < ApplicationController
     cart_item=CartItem.new(cart_item_params)
     cart_item.customer_id=current_customer.id
     cart_item.save
-    redirect_to cart_item_path(cart_item.id)
+    flash[:notice] ="商品をカートに追加しました"
+    redirect_to cart_items_path
   end
 
   def update
@@ -24,12 +25,14 @@ class Public::CartItemsController < ApplicationController
   def destroy
     cart_item=CartItem.find(params[:id])
     cart_item.destroy
+    flash[:notice] ="商品をカートから削除しました"
     redirect_to cart_items_path
   end
 
   def all_destroy
-    cart_items=current_customer.cart_items
-    cart_items.destroy_all
+    @cart_items=current_customer.cart_items.all
+    @cart_items.destroy_all
+    flash[:notice] ="カートが空になりました"
     redirect_to cart_items_path
   end
 
