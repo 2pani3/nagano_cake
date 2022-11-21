@@ -7,6 +7,11 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
   has_one_attached :item_image
   
+  validates :genre_id, presence:true
+  validates :name, presence:true
+  validates :description, presence:true
+  validates :price, presence:true
+  
   def get_item_image(width, height)
   unless item_image.attached?
     file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
