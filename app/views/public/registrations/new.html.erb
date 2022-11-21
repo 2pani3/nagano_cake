@@ -4,7 +4,8 @@
    </div>
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  
+<%= render "public/shared/error_messages", resource: resource %>
+
   <table class="table table-borderless align-middle">
             <tbody>
               <tr>
@@ -88,25 +89,25 @@
              <tr>
                <td></td>
                <td></td>
-               
+
                <td>
                  <div class="text-center my-5" >
                 <%= f.submit "新規登録", class: "btn btn-sm btn-outline-danger" %>
                 </div>
               </td>
-              
+
               <td></td>
              </tr>
            </tbody>
          </table>
           <% end %>
-          
+
           <h3><span class="px-3">既に登録済みの方</span></h3>
          <div>
            <%= link_to "こちら", new_customer_session_path %>からログインしてください。
          </div>
          </br>
-  
+
   <%#= render "public/shared/error_messages", resource: resource %>
 
 <!--      <div class="row">-->
@@ -127,7 +128,7 @@
 <!--           </div>-->
 <!--      </div>-->
 
-      
+
 <!--<div class="form-group">      -->
 <!--      <div class="row">-->
 <!--        <label class="col-sm-3">フリガナ</label>-->
