@@ -12,11 +12,12 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   if@customer.update(customer_params)
     flash[:notice] = "更新が完了しました！"
-    redirect_to customer_path(@customer.id)
+     redirect_to customers_path(@customer.id)
   end
   end
 
   def quit
+    
   end
 
   def withdrawal
