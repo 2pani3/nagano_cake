@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
 
+     <div class='col-md-2'>
+      <!--<#%= render 'public/items/genre_search', genres: @genres %>-->
+     </div>
+
+    <div class='col-md-9 offset-md-1'>
       <div class="card">
         <%= image_tag "1234.jpg" %>
           <div class="card-img-overlay align-items-center d-flex justify-content-center">
@@ -11,6 +16,32 @@
               購入には会員登録が必要になります。</h5></strong>
             </div>
           </div>
+      </div>
+
+
+            <h2><strong>新着商品</strong></h2>
+
+
+        <div class="form-inline">
+          <% @items.each do |item| %>
+            <table class="ml-2">
+              <tbody>
+                <tr><td>
+                  <%= link_to items_path(item) do %>
+                  <%= image_tag item.get_item_image(150,150) %>
+                  <% end %>
+                </td></tr>
+                <tr><td><strong><%= item.name %></strong></td></tr>
+                <tr><td><strong>¥<%= item.price.to_s(:delimited) %></strong></td></tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+
+        <div class="row justify-content-end">
+          <strong><%= link_to "全ての商品を見る>", items_path %></strong>
+        </div>
+
       </div>
 
 
