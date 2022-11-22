@@ -18,6 +18,7 @@ class Public::CartItemsController < ApplicationController
   def update
     cart_item=CartItem.find(params[:id])
     cart_item.update(cart_item_params)
+    flash[:notice] ="個数を変更しました"
     redirect_to cart_items_path(cart_item.id)
 
   end
