@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
+    # newブランチはここだけ
+    @order = Order.new
   end
 
   def check

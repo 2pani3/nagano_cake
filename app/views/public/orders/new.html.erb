@@ -1,5 +1,34 @@
-<div class="container px-5">
-  <div class="row d-flex mb-3">
-    <h3>注文情報入力</h3>
+<div class="container mt-3 px-5">
+  <div>
+    <h2 class="font-weight-bold">注文情報入力</h2>
+  </div>
+  <div>
+    <div>
+      <b>支払方法</b>
+    </div>
+    <div><!--クレジットカード-->
+      <%= form_with model: @order, url: check_path, method: :post, local: true do |f| %>
+        <%= f.radio_button :payment_way, Order.payment_ways.key(0) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:credit_card], value: Order.payment_ways.key(0) %>
+    </div>
+    <div><!--銀行振込-->
+        <%= f.radio_button :payment_way, Order.payment_ways.key(1) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:transfer], value: Order.payment_ways.key(0) %>
+    </div>
+    
+    <div>
+      <b>お届け先</b>
+    </div>
+    <div><!--クレジットカード-->
+      <%= form_with model: @order, url: check_path, method: :post, local: true do |f| %>
+        <%= f.radio_button :payment_way, Order.payment_ways.key(0) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:credit_card], value: Order.payment_ways.key(0) %>
+    </div>
+    <div><!--銀行振込-->
+        <%= f.radio_button :payment_way, Order.payment_ways.key(1) %>
+        <%= f.label :payment_way, Order.payment_ways_i18n[:transfer], value: Order.payment_ways.key(0) %>
+    </div>
+    
+      <% end %>
   </div>
 </div>
