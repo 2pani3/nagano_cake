@@ -2,60 +2,60 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <h4><strong><%#= "#{@customer.lsat_name}#{@customer.first_name}" %>さんの会員情報編集</strong></h4>
+      <h4><strong><%= "#{@customer.last_name}#{@customer.first_name}" %>さんの会員情報編集</strong></h4>
 
-    <%#= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+    <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 <div class="mt-4 shadow-lg px-5 py-5 mt-4">
   <table class="table　table-borderless table-sm ml-5">
   <div class="field">
     <tr>
     <div class="field">
-      <th>会員ID</th><td><%#= @customer.id %></td>
+      <th>会員ID</th><td><%= @customer.id %></td>
     </div>
     </tr>
   </div>
 
   <div class="field">
     <tr>
-      <th><%#= f.label :"名前" %></th>
-      <td><%#= f.text_field :last_name %></td>
-      <td><%#= f.text_field :first_name %></td>
+      <th><%= f.label :"名前" %></th>
+      <td><%= f.text_field :last_name %></td>
+      <td><%= f.text_field :first_name %></td>
     </tr>
   </div>
 
   <div class="field">
     <tr>
-      <th><%#= f.label :"フリガナ" %></th>
-      <td><%#= f.text_field :last_name_kana %></td>
-      <td><%#= f.text_field :first_name_kana %></td>
+      <th><%= f.label :"フリガナ" %></th>
+      <td><%= f.text_field :last_name_kana %></td>
+      <td><%= f.text_field :first_name_kana %></td>
     </tr>
   </div>
 
   <div class="field">
     <tr>
-      <th><%#= f.label :"郵便番号" %></th>
-      <td><%#= f.text_field :postcode %></td>
+      <th><%= f.label :"郵便番号" %></th>
+      <td><%= f.text_field :postcode %></td>
     </tr>
   </div>
 
   <div class="field">
     <tr>
-      <th><%#= f.label :"住所" %></th>
-      <td><%#= f.text_field :address %></td>
+      <th><%= f.label :"住所" %></th>
+      <td><%= f.text_field :address %></td>
     </tr>
   </div>
 
   <div class="field">
     <tr>
-      <th><%#= f.label :"電話番号" %></th>
-      <td><%#= f.text_field :phone_number %></td>
+      <th><%= f.label :"電話番号" %></th>
+      <td><%= f.text_field :phone_number %></td>
     </tr>
   </div>
 
   <div class="field">
     <tr>
-      <th><%#= f.label :"メールアドレス" %></th>
-      <td><%#= f.text_field :email %></td>
+      <th><%= f.label :"メールアドレス" %></th>
+      <td><%= f.text_field :email %></td>
     </tr>
   </div>
 
@@ -63,9 +63,9 @@
     <tr>
       <th></th>
       <label>
-        <td><%#= f.radio_button :is_deleted, false, checked: true %>
+        <td><%= f.radio_button :is_deleted, false, checked: true %>
         有効</td>
-        <td><%#= f.radio_button :is_deleted, true%>
+        <td><%= f.radio_button :is_deleted, true%>
         退会</td>
       </label>
     </tr>
@@ -73,9 +73,9 @@
   </table>
 </div>
   <div class="actions mt-3 text-center">
-    <%#= f.submit "変更を保存", class: "btn btn-success mt-2" %>
+    <%= f.submit "変更を保存", class: "btn btn-success mt-2" %>
   </div>
-<%# end %>
+<% end %>
 　　</div>
 　</div>
 </div>
