@@ -1,8 +1,9 @@
 <h2>ログイン</h2>
+<h4>会員の方はこちらからログイン</h4>
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  
-  
+
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -21,8 +22,6 @@
   <%# end %>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン", class:"btn btn-sm btn-outline-danger" %>
   </div>
 <% end %>
-
-<%#= render "public/shared/links" %>
