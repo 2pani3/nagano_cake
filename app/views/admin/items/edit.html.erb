@@ -4,11 +4,11 @@
       <h3>商品編集</h3>
     </div>
   </div>
-    <%= form_with model: @item, url:admin_item_path(@item), local: true do |f| %>
+    <%= form_with model:@item, url:admin_item_path(@item), local: true do |f| %>
       <div class="row mt-3">
         <div class="col-md-3 d-flex align-items-center flex-row-reverse">商品画像</div>
         <div class="col-md-5 text-left">
-          <%= f.file_field :itemimage, accept: "image/*" %>
+          <%= f.file_field :item_image, accept: "image/*" %>
         </div>
       </div>
       <div class="row mt-3">
