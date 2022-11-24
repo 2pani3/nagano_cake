@@ -7,8 +7,7 @@ class Order < ApplicationRecord
   enum status: { weiting: 0, check: 1, making: 2, prepare: 3, complete: 4 }
   enum payment_way: { credit_card: 0, transfer: 1 }
 
-  validates :postcode,:address,:name, presence: true, if: :select_address_new?
-
+  validates :shipping_postcode,:shipping_address,:shipping_name, presence: true, if: :select_address_new?
 
   def tax_price
     (price*1.1).floor
