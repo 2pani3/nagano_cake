@@ -12,9 +12,16 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
+    @addresses = current_customer
   end
 
   def update
+    @address = Address.find(params[:id])
+  if@address.update(address_params)
+    flash[:notice] = "変更内容を保存しました！"
+    redirect_to addresses_path
+  end
   end
 
   def destroy
