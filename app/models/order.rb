@@ -9,7 +9,12 @@ class Order < ApplicationRecord
 
   validates :postcode,:address,:name, presence: true, if: :select_address_new?
 
+
   def select_address_new?
     select_address_new == "新しいお届け先"
+  end
+  
+  def tax_price
+    (price*1.1).floor
   end
 end

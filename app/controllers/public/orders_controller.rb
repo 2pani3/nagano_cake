@@ -7,13 +7,16 @@ class Public::OrdersController < ApplicationController
   def check
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    @total 
     @shipping_fee = 800
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      @total_price += cart_item.item.tax_price*cart_item.amount
+    end
 
     if params[:order][:select_address] == "0"
       @order.shipping_postcode = current_customer.postcode
       @order.shipping_address = current_customer.address
-      @order.shipping_name = current_customer.name.full_name_nospace
+      @order.shipping_name = current_customer.full_name_nospace
 
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
@@ -47,6 +50,6 @@ class Public::OrdersController < ApplicationController
 
 private
   def order_params
-    params.require(:order).permit(:name, :address, :postcode)
+    params.require(:order).permit(:shipping_postcode, :shipping_address, :shipping_name, :peyment_way, :total_peyment, :status)
   end
 end

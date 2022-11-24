@@ -41,19 +41,27 @@
         <table class="table"width="80%">
           <tr>
             <th>送料</th>
-            <td>800</td>
+            <td><%= @shipping_fee.to_s %></td>
           </tr>
           <tr>
             <th>商品合計</th>
-            <td><%= %></td>
+            <td><%= @total_price.to_s %></td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td><%= %></td>
+            <td><%= (@total_price + @shipping_fee).to_s %></td>
           </tr>
         </table>
       </div>
-    </div>
 
+    </div>
+    <div class="row">
+      <b>支払方法</b>
+      <%#= @order.payment_ways_i18n %>
+    </div>
+    <div class="row">
+      <b>お届け先</b>
+      <%#= @order.address %>
+    </div>
   </div>
 </div>
