@@ -57,12 +57,16 @@
     </div>
     <div class="row">
       <b>支払方法</b>
-      <%#= @order.payment_ways_i18n %>
+      <div class="col-5 mt-2 mb-3"><%= @order.payment_way_i18n %></div>
     </div>
     <div class="row">
       <b>お届け先</b>
-      〒<%= @order.shipping_postcode + " " + @order.shipping_address %><br>
-      <%= @order.shipping_name %>
+      <div class="col-5 mb-5">〒<%= @order.shipping_postcode + " " + @order.shipping_address %><br>
+        <%= @order.shipping_name %></div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+        <%= link_to '注文を確定する', complete_path, class:"btn btn-sm btn-outline-danger" %>
     </div>
   </div>
 </div>
