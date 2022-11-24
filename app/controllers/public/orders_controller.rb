@@ -45,6 +45,25 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
+    if @order.save
+      @cart_items.each do |cart|
+        @order_detail = OrderDetail.new #order_detailにデータを移す
+        @order_detail.item_id = cart.item_id
+        @order_detail.order_id = @order.id
+        @order_detail.amount = cart.amount
+        @order_detail.price = cart.item.tax_price
+        @order_detail.save #order_detailに保存
+      end
+      current_customer.cart_items.destroy_all
+      redirect_to complete_path
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
+
   end
 
   def index
