@@ -1,6 +1,13 @@
 
 <div class="container px-5 px-sm-0">
-  <h2 class="font-weight-bold">商品一覧(全<%= @items_all.count %>件)</h2>
+  <h2 class="font-weight-bold">
+    <% if params[:genre_id] %>
+      <%= @genre.name %>
+    <% else %>
+      すべての商品
+    <% end %>
+    (全<%= @items_all.count %>件)
+  </h2>
   <!--<div class="row">-->
     <!--<div class="col-md-3">-->
     <!--  <h2>ジャンル検索</h2>-->
