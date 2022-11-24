@@ -47,26 +47,26 @@
       </div>
       <div class="row">
         <div class="col-4">
-        <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+        <%= f.label :shipping_postcode, "郵便番号(ハイフンなし)" %>
         </div>
         <div class="col-8">
-        <%= f.text_field :postcode, autocomplete: "postcode", placeholder:"0000000" %>
+        <%= f.text_field :shipping_postcode, autocomplete: "postcode", placeholder:"0000000" %>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
-          <%= f.label :address, "住所" %>
+          <%= f.label :shipping_address, "住所" %>
         </div>
         <div class="col-8">
-          <%= f.text_field :address, autocomplete: "address", placeholder:"東京都渋谷区代々木神園町0-0",size: "50" %>
+          <%= f.text_field :shipping_address, autocomplete: "address", placeholder:"東京都渋谷区代々木神園町0-0",size: "50" %>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
-          <%= f.label :name, "宛名" %>
+          <%= f.label :shipping_name, "宛名" %>
         </div>
         <div class="col-8">
-          <%= f.text_field :name, autocomplete: "name", placeholder:"令和道子" %>
+          <%= f.text_field :shipping_name, autocomplete: "name", placeholder:"令和道子" %>
         </div>
       </div>
 
