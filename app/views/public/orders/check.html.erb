@@ -45,11 +45,11 @@
           </tr>
           <tr>
             <th>商品合計</th>
-            <td><%= @total_price.to_s %></td>
+            <td><%= @total_price.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td><%= (@total_price + @shipping_fee).to_s %></td>
+            <td><%= (@total_price + @shipping_fee).to_s(:delimited) %></td>
           </tr>
         </table>
       </div>
@@ -66,7 +66,16 @@
     </div>
 
     <div class="row justify-content-center mb-5">
-        <%= link_to '注文を確定する', complete_path, class:"btn btn-sm btn-outline-danger" %>
+    <%= form_with model: @order,url: orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :shipping_postcode, :value => @order.shipping_postcode %>
+      <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
+      <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
+      <%= f.hidden_field :payment_way, :value => @order.payment_way %>
+      <%= f.hidden_field :total_payment, :value => @total_price %>
+      <%= f.hidden_field :status, :value => Order.statuses.key(0) %>
+      <%= f.hidden_field :shipping_fee, :value => @shipping_fee %>
+      <%= f.submit "注文を確定する", class:"btn btn-sm btn-outline-danger" %>
+    <% end %>
     </div>
   </div>
 </div>
