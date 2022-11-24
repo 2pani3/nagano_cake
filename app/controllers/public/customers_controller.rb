@@ -8,7 +8,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    # @customer = Customer.find(params[:id])
     @customer = current_customer
   if@customer.update(customer_params)
     flash[:notice] = "更新が完了しました！"
@@ -17,7 +16,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def quit
-    
   end
 
   def withdrawal

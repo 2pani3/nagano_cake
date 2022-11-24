@@ -53,23 +53,19 @@
         </thead>
 
         <tbody>
-         <% @address.each do |address| %>
+         <% @addresses.each do |address| %>
           <tr>
             <th><%= address.postcode %></th>
             <th><%= address.address %></th>
             <th><%= address.name %></th>
             <th><%= link_to  "編集する", edit_address_path(address.id), class:"btn btn-outline-danger ml-5" %>
-                <%= link_to "消去する", addresses_path(address.id), class: "btn btn-danger" %></th>
+                <%= link_to "消去する", address_path(address), method: :delete, class: "btn btn-danger" , "data-confirm" => "本当に削除しますか？" %></th>
           </tr>
          <% end %>
         </tbody>
        </table>
       </div>
 
-
-
-
-
-
-
+      </br>
+      </br>
 </div>
