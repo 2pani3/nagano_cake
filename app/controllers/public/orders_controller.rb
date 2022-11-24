@@ -25,13 +25,14 @@ class Public::OrdersController < ApplicationController
       @order.shipping_name = @address.name
 
     elsif params[:order][:select_address] == "2"
-      unless params[:order][:select_address] == ""
-        
-      
-      @order.shipping_postcode = params[:order][:shipping_postcode]
-      @order.shipping_address = params[:order][:shipping_address]
-      @order.shipping_name = params[:order][:shipping_name]
-      @order.save
+      # 住所入力を選んだのに空白だと進めないようにする 実装できず...
+      unless params[:order][:select_address] == " "
+        @order.shipping_postcode = params[:order][:shipping_postcode]
+        @order.shipping_address = params[:order][:shipping_address]
+        @order.shipping_name = params[:order][:shipping_name]
+      else
+        flash[:notice] ="フォームに情報を入力してください"
+        render :new
       end
     else
       render :new
