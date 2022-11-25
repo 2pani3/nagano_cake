@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   validates :description, presence:true
   validates :price, presence:true
 
+
   def get_item_image(width, height)
     unless item_image.attached?
       file_path = Rails.root.join('app/assets/images/coming_soon.png')
