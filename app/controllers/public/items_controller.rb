@@ -14,4 +14,8 @@ class Public::ItemsController < ApplicationController
   params.require(:item).permit(:name,:item_image,:price)
  end
 
+ def cart_item_params
+    params.require(:cart_item).permit(:item_id, :customer_id, :amount)
+ end
+
 end
