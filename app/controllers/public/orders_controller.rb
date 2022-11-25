@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
   def new
-    # newブランチはここだけ
     @order = Order.new
   end
 
@@ -72,6 +71,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order =Order.find(params[:id])
+    @orders = @order.order_details
   end
 
 private
