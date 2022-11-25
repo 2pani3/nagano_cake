@@ -1,0 +1,43 @@
+<div class="container"></br>
+   <div class="col-12 mx-auto">
+     <h3>配送先編集</h3>
+   </div>
+   
+   <%= form_with model: @address, url: address_path, id: 'address', class: 'address', local: true do |f| %>
+
+   </br>
+
+      <div class="row">
+        <label class="col-sm-3">郵便番号(ハイフンなし) </label>
+          <div class="col-sm-9">
+            <%= f.text_field :postcode, placeholder:"0000000" %>
+          </div>
+      </div>
+
+      </br>
+
+      <div class="row">
+        <label class="col-sm-3">住所</label>
+          <div class="col-5">
+            <%= f.text_field :address, placeholder:"東京都", class:"form-control" %>
+          </div>
+      </div>
+
+      </br>
+
+      <div class="row">
+        <label class="col-sm-3">宛名</label>
+          <div class="col-5">
+            <%= f.text_field :name, placeholder:"令和道子", class:"form-control" %>
+          </div>
+          <div class="col-1">
+            <%= f.submit "変更内容を保存", class: "btn btn-sm btn-outline-danger" %>
+          </div>
+      </div>
+    <%end%>
+
+
+
+      </br>
+      </br>
+</div>

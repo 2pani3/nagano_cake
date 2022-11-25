@@ -8,8 +8,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :shipping_address, null:false
       t.string :shipping_name, null:false
       t.integer :status, default:0,null:false,limit:1
-      t.integer :peyment_way, default:0,null:false,limit:1
-      t.integer :total_peyment, null:false
+      t.integer :payment_way, default:0,null:false,limit:1
+      t.integer :total_payment, null:false
       t.timestamps
     end
   end
