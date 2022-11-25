@@ -72,6 +72,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order =Order.find(params[:id])
+    @orders =current_customer.orders.all
+    # @total_price += @order.item.tax_price*@order.amount
   end
 
 private
