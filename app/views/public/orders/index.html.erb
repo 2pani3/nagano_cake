@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <h2>注文履歴一覧</h2>
+  </div>
+  <div class="row mt-3">
+    <table class="table" width="80%">
+      <thead>
+        <tr>
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.created_at%></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
