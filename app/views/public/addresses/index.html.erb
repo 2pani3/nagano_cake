@@ -6,7 +6,7 @@
    <%= form_with model: @address, url: addresses_path, id: 'address', class: 'address', local: true do |f| %>
 
    </br>
-
+   
       <div class="row">
         <label class="col-sm-3">郵便番号(ハイフンなし) </label>
           <div class="col-sm-9">
@@ -59,7 +59,7 @@
             <th><%= address.address %></th>
             <th><%= address.name %></th>
             <th><%= link_to  "編集する", edit_address_path(address.id), class:"btn btn-outline-danger ml-5" %>
-                <%= link_to "消去する", address_path(address), method: :delete, class: "btn btn-danger" , "data-confirm" => "本当に削除しますか？" %></th>
+                <%= link_to "消去する", address_path(address), method: :delete, class: "btn btn-danger ml-3" , "data-confirm" => "本当に削除しますか？" %></th>
           </tr>
          <% end %>
         </tbody>
