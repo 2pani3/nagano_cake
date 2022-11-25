@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
   def new
-    # newブランチはここだけ
     @order = Order.new
   end
 
@@ -73,8 +72,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order =Order.find(params[:id])
-    @orders =current_customer.orders.all
-    # @total_price += @order.item.tax_price*@order.amount
+    @orders = @order.order_details
   end
 
 private
