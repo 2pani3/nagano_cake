@@ -16,16 +16,17 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :items, only: [:index, :show]
     resource :customers,only: [:show, :edit]
-      patch 'customers/information' => 'customers#update', as:'information'
-      get 'customers/quit' => 'customers#quit', as:'quit'
-      patch 'customers/withdrawal' => 'customers#withdrawal', as:'withdrawal'
+    patch 'customers/information' => 'customers#update', as:'information'
+    get 'customers/quit' => 'customers#quit', as:'quit'
+    patch 'customers/withdrawal' => 'customers#withdrawal', as:'withdrawal'
 
-      delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as:'all_destroy'
+    delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as:'all_destroy'
     resources :cart_items,only: [:index, :update, :destroy, :create]
 
+    get 'orders/complete' => 'orders#complete', as:'complete'
+    post 'orders/check' => 'orders#check', as:'check'
     resources :orders,only: [:index, :new, :show, :create]
-      post 'orders/check' => 'orders#check', as:'check'
-      get 'orders/complete' => 'orders#complete', as:'complete'
+
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
   end
   # 管理者
