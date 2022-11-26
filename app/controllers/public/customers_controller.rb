@@ -9,7 +9,6 @@ class Public::CustomersController < ApplicationController
 
   def update
      @customer = current_customer
-    # @customer = Customer.find_by(id: current_customer.id)
   if @customer.update(customer_params)
      flash[:notice] = "更新が完了しました！"
      redirect_to customers_path(@customer.id)
