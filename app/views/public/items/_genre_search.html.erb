@@ -1,0 +1,12 @@
+      <table class="table table-bordered ml-1">
+        <thead>
+          <th>ジャンル一覧</th>
+        </thead>
+        <tbody>
+          <% genres.each do |genre| %>
+            <tr>
+              <th><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
