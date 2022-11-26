@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get 'about'=>'public/homes#about'
 # 会員側
-    devise_for :customers, skip: [:passwords], controllers: {
+    devise_for :customer, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
@@ -15,15 +15,18 @@ Rails.application.routes.draw do
   # 会員
   scope module: :public do
     resources :items, only: [:index, :show]
-    resources :customers,only: [:show, :edit]
-      patch 'customers/information' => 'customers#update', as:'information'
-      get 'customers/quit' => 'customers#quit', as:'quit'
-      patch 'customers/withdrawal' => 'customers#withdrawal', as:'withdrawal'
+    resource :customers,only: [:show, :edit]
+    patch 'customers/information' => 'customers#update', as:'information'
+    get 'customers/quit' => 'customers#quit', as:'quit'
+    patch 'customers/withdrawal' => 'customers#withdrawal', as:'withdrawal'
+
+    delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as:'all_destroy'
     resources :cart_items,only: [:index, :update, :destroy, :create]
-      delete 'cart_items/all_destroy' => 'cart_items#all_destroy', as:'all_destroy'
+
+    get 'orders/complete' => 'orders#complete', as:'complete'
+    post 'orders/check' => 'orders#check', as:'check'
     resources :orders,only: [:index, :new, :show, :create]
-      post 'orders/check' => 'orders#check', as:'check'
-      get 'orders/complete' => 'orders#complete', as:'complete'
+
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
   end
   # 管理者
