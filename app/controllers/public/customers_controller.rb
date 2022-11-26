@@ -8,15 +8,17 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = current_customer
-  if@customer.update(customer_params)
-    flash[:notice] = "更新が完了しました！"
+     @customer = current_customer
+    # @customer = Customer.find_by(id: current_customer.id)
+  if @customer.update(customer_params)
+     flash[:notice] = "更新が完了しました！"
      redirect_to customers_path(@customer.id)
+  else
+     render :edit
   end
   end
 
   def quit
-    
   end
 
   def withdrawal
