@@ -10,9 +10,18 @@ class Public::CartItemsController < ApplicationController
   def create
     cart_item=CartItem.new(cart_item_params)
     cart_item.customer_id=current_customer.id
-    cart_item.save
-    flash[:notice] ="商品をカートに追加しました"
-    redirect_to cart_items_path
+
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present? #すでに入っている同じ商品はあるか？
+      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      cart_item.amount += params[:cart_item][:amount].to_i #cart_itemパラムの数量を足す
+      cart_item.save
+      flash[:notice] ="商品をカートに追加しました"
+      redirect_to cart_items_path
+    else #同じ商品がないならそのまま保存
+      cart_item.save
+      redirect_to cart_items_path
+    end
+
   end
 
   def update
