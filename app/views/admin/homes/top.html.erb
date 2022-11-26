@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @order.each do |order| %>
+    <% @orders.each do |order| %>
     <tr>
       <td>
         <%= link_to admin_order_path(order) do %>
@@ -25,12 +25,12 @@
       <td><%= order.customer.full_name_nospace %></td>
       <td>
         <% @total_amount = 0 %>
-        <% order.order_items.each do |order_item| %>
-          <% @total_amount += order_item.quantity %>
+        <% order.order_details.each do |order_detail| %>
+          <% @total_amount += order_detail.amount %>
         <% end %>
         <%= @total_amount %>
       </td>
-      <td><%= order.status %></td>
+      <td><%= order.status_i18n %></td>
     </tr>
     <% end %>
    </tbody>
