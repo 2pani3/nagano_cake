@@ -46,6 +46,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
     if @order.save
       @cart_items.each do |cart|
         @order_detail = OrderDetail.new #order_detailにデータを移す
