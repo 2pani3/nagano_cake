@@ -19,6 +19,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
     # flash[:notice] = "Welcome! You have signed up successfully."
@@ -44,5 +45,5 @@ protected
    else
    end
   end
-  
+
 end
