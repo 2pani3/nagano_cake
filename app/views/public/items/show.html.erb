@@ -9,7 +9,7 @@
         <h4><%= @item.description %></h4>
       </div>
       <div class="mt-5">
-        <h3 class="font-weight-bold">¥<%= @item.price.to_s(:delimited) %></h3><p>(税込)</p>
+        <h3 class="font-weight-bold">¥<%= @item.tax_price.to_s(:delimited) %></h3><p>(税込)</p>
       </div>
 
 
