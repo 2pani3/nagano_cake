@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex-column vh-100">
+  <body class="d-flex-column vh-100 pb-5">
     <!--ヘッダーの部分テンプレート-->
     <%= render 'layouts/header' %>
     <!--フラッシュメッセージの表示-->
@@ -19,7 +19,6 @@
 
     <!--コンテンツ-->
     <%= yield %>
-
 
     <!--フッターの部分テンプレート-->
     <%= render 'layouts/footer' %>
