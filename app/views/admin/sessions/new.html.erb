@@ -1,0 +1,32 @@
+<div class="container pb-5">
+  <div class="row">
+    <div class="col-5 px-0 mx-auto">
+      <div class="mb-4">
+      <h2><strong>管理者ログイン</strong></h2>
+      </div>
+      <%= form_with model: @admin,url: admin_session_path, id: 'new_admin', class: 'new_admin', local: true do |f| %>
+        <div class="field form-group">
+           <%= f.label "メールアドレス" %>
+           <p><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "sample@example.com" %></p>
+        </div>
+
+
+        <div class="field">
+          <%= f.label "パスワード" %>
+          <p><%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %></p>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "ログイン", class:"btn btn-sm btn-outline-danger" %><br>
+        </div>
+        </br>
+      <% end %>
+      <%= render "admin/shared/links" %>
+    </div>
+  </div>
+</div>

@@ -6,13 +6,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
+  <body class="d-flex-column vh-100 pb-5">
+    <!--ヘッダーの部分テンプレート-->
+    <%= render 'layouts/header' %>
+    <!--フラッシュメッセージの表示-->
+    <p class="notice text-center mt-3"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <!--コンテンツ-->
     <%= yield %>
+
+    <!--フッターの部分テンプレート-->
+    <%= render 'layouts/footer' %>
   </body>
 </html>
